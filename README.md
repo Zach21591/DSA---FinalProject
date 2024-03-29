@@ -16,6 +16,6 @@
   ```
 
 **4. Downloaad Neccessary Files**
-  - Download the 'finalProject.py' as well as the 'DSA Final Project - Weighted Graph.csv'. Once both are downloaded, create a new folder or use an exisiting folder, and add both downloaded files into the same     folder.
+  - Download the `finalProject.py` as well as the `DSA Final Project - Weighted Graph.csv`. Once both are downloaded, create a new folder or use an exisiting folder, and add both downloaded files into the same     folder.
 
 ## EXECUTION INSTRUCTIONS
