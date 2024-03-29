@@ -1,4 +1,4 @@
-##SETUP
+## SETUP
 
 **1. Install Python**
   - Make sure python is installed on your preffered system. You can download python from https://www.python.org/downloads/.
@@ -11,4 +11,4 @@
   ```
   $ pip install networkx
   ```
-##EXECUTION INSTRUCTIONS
+## EXECUTION INSTRUCTIONS
