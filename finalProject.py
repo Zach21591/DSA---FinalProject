@@ -78,7 +78,7 @@ for node in weightedGraph.nodes():
 
 # Uses the graphDisplay to show the graph
 graphDisplay(weightedGraph, nodeColor)
-firstNode = 'A'
+firstNode = input("Enter the node you would like to start at (A-W): ")
 destinationNode = 'H'
 shortestPath = dijkstraAlg(weightedGraph, firstNode, destinationNode)
 destinationNode2 = 'K'
