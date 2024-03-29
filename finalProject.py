@@ -29,9 +29,34 @@ def graphDisplay(weightedGraph, nodeColor = None):
     # positions the graph
     position = nx.spring_layout(weightedGraph)
     # draws the graph using the networkx module
-    nx.draw_networkx(weightedGraph, position, node_color = nodeColor)
+    nx.draw_networkx_nodes(weightedGraph, position, node_color = nodeColor)
+    nx.draw_networkx_edges(weightedGraph, position)
+    nx.draw_networkx_labels(weightedGraph, position)
+
+    edge_labels = {(nodeOne, nodeTwo): weight['weight'] for nodeOne, nodeTwo, weight in weightedGraph.edges(data = True)}
+    nx.draw_networkx_edge_labels(weightedGraph, position, edge_labels = edge_labels)
+
     # shows the graph using the matpilotlib module
     plt.show()
+
+def dijkstraAlg(graph, originNode, destination):
+    nodeVisited = {node: False for node in graph.nodes()}
+    distance = {node: float('inf') for node in graph.nodes()}
+    distance[originNode] = 0
+
+    while not nodeVisited[destination]:
+        minimumDist = float('inf')
+        minimumNode = None
+        for node in graph.nodes():
+            if not nodeVisited[node] and distance[node] < minimumDist:
+                minimumDist = distance[node]
+                minimumNode = node
+
+        nodeVisited[minimumNode] = True
+        for nextNode, weight in graph[minimumNode].items():
+            if not nodeVisited[nextNode] and distance[minimumNode] + weight['weight'] < distance[nextNode]:
+                distance[nextNode] = distance[minimumNode] + weight['weight']
+    return distance[destination]
 
 # variable to that calls the csv file with the data in it
 data = 'DSA Final Project - Weighted Graph.csv'
@@ -53,7 +78,16 @@ for node in weightedGraph.nodes():
 
 # Uses the graphDisplay to show the graph
 graphDisplay(weightedGraph, nodeColor)
-# prints the nodes
-print("Nodes:", weightedGraph.nodes())
-# prints the edges
-print("Edges:", weightedGraph.edges())
+firstNode = 'A'
+destinationNode = 'H'
+shortestPath = dijkstraAlg(weightedGraph, firstNode, destinationNode)
+destinationNode2 = 'K'
+shortestPath2 = dijkstraAlg(weightedGraph, firstNode, destinationNode2)
+destinationNode3 = 'Q'
+shortestPath3 = dijkstraAlg(weightedGraph, firstNode, destinationNode3)
+destinationNode4 = 'T'
+shortestPath4 = dijkstraAlg(weightedGraph, firstNode, destinationNode4)
+print("Shortest path length from", firstNode, "to", destinationNode, ":", shortestPath)
+print("Shortest path length from", firstNode, "to", destinationNode2, ":", shortestPath2)
+print("Shortest path length from", firstNode, "to", destinationNode3, ":", shortestPath3)
+print("Shortest path length from", firstNode, "to", destinationNode4, ":", shortestPath4)
